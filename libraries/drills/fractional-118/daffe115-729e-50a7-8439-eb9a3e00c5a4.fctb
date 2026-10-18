@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "daffe115-729e-50a7-8439-eb9a3e00c5a4",
+  "name": "Drill 7/16 in (0.4375 in) - HSS Jobber 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "103.1875 mm",
+    "Diameter": "11.1125 mm",
+    "Flutes": 2,
+    "Length": "139.7 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

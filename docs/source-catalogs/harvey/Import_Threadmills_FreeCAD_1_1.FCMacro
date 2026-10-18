@@ -1,0 +1,108 @@
+# FreeCAD 1.1 CAM bulk cutting tool importer (including thread mills)
+# Run inside FreeCAD's GUI with the CAM workbench loaded.
+# Select a folder with .fctb files, then an existing library.
+# Test mode imports at most three new tools. Run again for the remainder.
+import json
+import pathlib
+import traceback
+import FreeCAD as App
+from PySide import QtWidgets
+from Path.Tool.camassets import cam_assets
+
+
+def main():
+    cam_assets.setup()
+    parent = None
+    folder = QtWidgets.QFileDialog.getExistingDirectory(
+        parent, 'Select folder containing .fctb cutting tools')
+    if not folder:
+        return
+    paths = sorted(pathlib.Path(folder).rglob('*.fctb'))
+    if not paths:
+        QtWidgets.QMessageBox.warning(parent, 'No tools', 'No .fctb files found.')
+        return
+
+    lib_uris = cam_assets.list_assets('toolbitlibrary', store='local')
+    libraries = []
+    for uri in lib_uris:
+        try:
+            lib = cam_assets.get(uri)  # with resolved tool dependencies
+            libraries.append((str(lib.label) + ' [' + str(uri.asset_id) + ']', uri, lib))
+        except Exception as exc:
+            App.Console.PrintWarning('Skipping unreadable library %s: %s\n' % (uri, exc))
+    if not libraries:
+        QtWidgets.QMessageBox.warning(parent, 'No libraries',
+            'First create an empty destination library in CAM -> Tool Bit Library, then rerun.')
+        return
+    labels = [t[0] for t in libraries]
+    selection, ok = QtWidgets.QInputDialog.getItem(
+        parent, 'Destination library', 'Choose existing library:', labels, 0, False)
+    if not ok:
+        return
+    selected = libraries[labels.index(selection)]
+    lib_uri, library = selected[1], selected[2]
+    mode, ok = QtWidgets.QInputDialog.getItem(
+        parent, 'Import mode', 'Number of NEW tools to import:',
+        ['TEST: at most 3', 'ALL: remaining tools'], 0, False)
+    if not ok:
+        return
+    maximum = 3 if mode.startswith('TEST') else len(paths)
+
+    # Validate all source files before making changes.
+    candidates = []
+    for path in paths:
+        try:
+            obj = json.loads(path.read_text(encoding='utf-8'))
+            assert obj['id'] == path.stem, 'id / filename mismatch'
+            assert obj['shape'] in ('drill.fcstd', 'endmill.fcstd', 'thread-mill.fcstd'), 'unsupported tool shape (expected thread-mill.fcstd for thread mills)'
+            assert 'Diameter' in obj['parameter'], 'missing diameter'
+            candidates.append((path, obj))
+        except Exception as exc:
+            raise ValueError('Invalid source file %s: %s' % (path, exc))
+
+    # Back up the exact destination library bytes before writing anything.
+    backup = pathlib.Path(folder) / ('backup_' + str(lib_uri.asset_id) + '.fctl')
+    if backup.exists():
+        backup = pathlib.Path(folder) / ('backup_' + str(lib_uri.asset_id) + '_2.fctl')
+    backup.write_bytes(cam_assets.get_raw(lib_uri, store='local'))
+
+    existing = {bit.get_id() for bit in library.get_bits()}
+    imported = 0
+    skipped = 0
+    errors = []
+    for path, obj in candidates:
+        if obj['id'] in existing:
+            skipped += 1
+            continue
+        if imported >= maximum:
+            break
+        try:
+            uri = 'toolbit://' + obj['id']
+            # Never overwrite a tool definition already stored in FreeCAD.
+            if not cam_assets.exists(uri, store='local'):
+                cam_assets.add_file('toolbit', path, store='local', asset_id=obj['id'])
+            bit = cam_assets.get(uri)
+            library.add_bit(bit)
+            # Save after each successful addition, making reruns recoverable.
+            payload = json.dumps(library.to_dict(), indent=2, sort_keys=True).encode('utf-8')
+            cam_assets.add_raw('toolbitlibrary', lib_uri.asset_id, payload, store='local')
+            existing.add(obj['id'])
+            imported += 1
+            App.Console.PrintMessage('Added: %s\n' % obj.get('name', path.name))
+        except Exception as exc:
+            errors.append('%s: %s' % (path.name, exc))
+            App.Console.PrintError('Failed: %s\n%s\n' % (path.name, traceback.format_exc()))
+    message = ('Added: %d\nAlready in destination: %d\nErrors: %d\n'
+               'Library backup: %s\n\nClose and reopen the Tool Bit Library manager to refresh.'
+               % (imported, skipped, len(errors), backup))
+    if errors:
+        message += '\n\nFirst errors:\n' + '\n'.join(errors[:3])
+    QtWidgets.QMessageBox.information(parent, 'Tool import results', message)
+
+
+try:
+    main()
+except Exception:
+    App.Console.PrintError(traceback.format_exc())
+    QtWidgets.QMessageBox.critical(None, 'Import failed',
+        'Import stopped. See View -> Panels -> Report view for details.')

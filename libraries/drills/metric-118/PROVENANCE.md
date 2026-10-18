@@ -1,0 +1,5 @@
+# Installed metric drill source
+
+Copied byte-for-byte from the user's installed FreeCAD 1.1.3 Flatpak Jobber Metric Drills library. Diameters run from 1.0 to 13.0 mm in 0.1 mm increments; 118 degree point, 2 flutes, HSS. Tool names reference DIN338, but no original catalog, measurements, author, or dimension-source documentation was available. Overall and cutting-edge lengths have not been independently verified. Treat geometry as provisional and unsuitable for collision checking. Redistribution rights remain unverified. Existing installed tools and numbers were not changed.
+
+Source library UUID: `2400f95a-837b-4b8f-be69-239007f417e4`. Source label: `Jobber Metric Drills`. Import date: 2026-10-18. Original UUIDs, filenames, parameters, labels, and source file bytes were preserved. The source library snapshot and an index generated from those exact definitions are in `docs/source-catalogs/metric-installed/`. The snapshot records original membership numbers for reference; new installations use the installer's normal numbering policy. The code MIT license does not license this data.

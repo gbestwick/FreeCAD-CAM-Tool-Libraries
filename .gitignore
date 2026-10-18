@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.install-backups/
+.test-runs/
+
+# Local agent configuration and credential placeholders
+.agents/
+.codex/
+.aws
+.env
+.env.*

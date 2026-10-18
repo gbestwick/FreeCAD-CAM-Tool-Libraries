@@ -1,0 +1,16 @@
+Reference thread size,Typical UNC TPI,Typical UNF TPI,Harvey part #,Cutter diameter (in),Neck diameter (in),Max threading depth (in),Flutes,Shank diameter (in),Overall length (in),Coating,Source URL,FreeCAD file,CuttingEdgeHeight status
+#0,80,,54202-C3,0.044,0.024,0.187,2,0.125,1.5,AlTiN C3,https://www.harveytool.com/products/tool-details-54202-c3,08dec0fe-43c7-4a77-94ce-27bfa93b152d.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#1,64,72,41404,0.054,0.032,0.187,2,0.125,1.5,Uncoated,https://www.harveytool.com/products/tool-details-41404,87fb304d-fd9f-4964-b747-e0bfdd2f37d8.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#2,56,64,822706-C3,0.064,0.038,0.187,2,0.125,1.5,AlTiN C3,https://www.harveytool.com/products/tool-details-822706-c3,9e3c944e-961a-410e-82ff-4f9ac0a6ee39.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#3,48,56,54208-C3,0.072,0.04,0.375,2,0.125,1.5,AlTiN C3,https://www.harveytool.com/products/tool-details-54208-c3,bbaa62c5-d313-40e7-92ce-20258e105f7a.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#4,40,48,993910-C3,0.08,0.04,0.5,2,0.1875,2,AlTiN C3,https://www.harveytool.com/products/tool-details-993910-c3,51f601cf-524d-41d2-81d0-004121daa830.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#5,40,44,822715-C3,0.093,0.05,0.25,4,0.1875,2,AlTiN C3,https://www.harveytool.com/products/tool-details-822715-c3,7280a491-136d-4880-a887-9c30d4d11df7.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#6,32,40,822720-C3,0.098,0.05,0.312,4,0.1875,2,AlTiN C3,https://www.harveytool.com/products/tool-details-822720-c3,613b280e-29a1-47a9-8d03-eb7cff36ccea.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#8,32,36,820330-C3,0.12,0.07,0.375,4,0.25,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-820330-c3,78386acd-242f-4870-ae64-a6ca31d823cc.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#10,24,32,820340-C3,0.135,0.07,0.375,4,0.25,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-820340-c3,fd454a26-4261-4395-98d6-383f570c4c75.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+#12,24,28,822745-C3,0.16,0.095,0.5,4,0.25,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-822745-c3,c654aa8f-466b-4ed2-a4ee-c61183dd9bed.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+1/4,20,28,822750-C3,0.18,0.115,0.625,4,0.25,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-822750-c3,f58b0de8-db2d-4a47-944e-604471d549cc.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+5/16,18,24,822755-C3,0.24,0.16,0.625,4,0.25,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-822755-c3,a7e5c743-0fe6-4cac-b37a-48c8b85a1770.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+3/8,16,24,822760-C3,0.3,0.218,0.875,4,0.375,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-822760-c3,6c19d560-8c4e-49b0-882c-a5873741e437.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+7/16,14,20,71065-C3,0.34,0.23,0.75,4,0.375,2.5,AlTiN C3,https://www.harveytool.com/products/tool-details-71065-c3,3a2ba961-4a72-41ec-96f1-1a56a4609122.fctb,VISUAL PLACEHOLDER: max depth != length of cut
+1/2,13,20,822770-C3,0.388,0.25,1.0,4,0.5,3,AlTiN C3,https://www.harveytool.com/products/tool-details-822770-c3,e77e7a90-82ed-4c8a-9071-1975c17fc3a9.fctb,VISUAL PLACEHOLDER: max depth != length of cut

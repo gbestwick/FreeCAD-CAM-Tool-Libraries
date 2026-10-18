@@ -1,0 +1,22 @@
+name: Core tests
+on: [push, pull_request]
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ['3.10', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests (no FreeCAD)
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests -v
+      - name: Audit available source data
+        env:
+          PYTHONPATH: src
+        run: python -m freecad_cam_libraries.audit

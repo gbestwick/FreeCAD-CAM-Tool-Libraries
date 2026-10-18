@@ -1,0 +1,52 @@
+# FreeCAD CAM Tool Library Manager — keep this macro with src/ and libraries/.
+import pathlib
+import sys
+import traceback
+import FreeCAD as App
+
+
+def _project_root():
+    candidates = []
+    for value in (globals().get("__file__"), sys._getframe().f_code.co_filename):
+        if value and not str(value).startswith("<"):
+            candidates.append(pathlib.Path(value).expanduser().resolve().parent)
+    # Some macro runners do not set __file__. Permit a complete extraction in
+    # the configured macro folder, working directory, or one wrapper folder.
+    candidates.extend((pathlib.Path(App.getUserMacroDir()), pathlib.Path.cwd()))
+    matches = []
+    for candidate in candidates:
+        for base in (candidate, candidate.parent):
+            if (base / "src/freecad_cam_libraries/gui.py").is_file() and (base / "libraries/manifest.json").is_file():
+                return base
+        if candidate.is_dir():
+            for child in candidate.iterdir():
+                if child.is_dir() and (child / "src/freecad_cam_libraries/gui.py").is_file() and (child / "libraries/manifest.json").is_file():
+                    matches.append(child)
+    unique = list(dict.fromkeys(matches))
+    if len(unique) == 1:
+        return unique[0]
+    raise RuntimeError("Cannot locate a unique installer repository. Run the macro from the complete extracted folder containing src/ and libraries/. Keep all files together.")
+
+
+try:
+    _root = _project_root()
+    _source = str(_root / "src")
+    if _source not in sys.path:
+        sys.path.insert(0, _source)
+    # FreeCAD keeps imported Python modules between macro executions. Avoid
+    # using a different previously extracted copy's implementation.
+    for _name in list(sys.modules):
+        if _name == "freecad_cam_libraries" or _name.startswith("freecad_cam_libraries."):
+            del sys.modules[_name]
+    from freecad_cam_libraries.gui import launch
+    launch(_root)
+except Exception as _exc:
+    App.Console.PrintError(traceback.format_exc())
+    try:
+        from PySide import QtWidgets
+    except ImportError:
+        try:
+            from PySide2 import QtWidgets
+        except ImportError:
+            from PySide6 import QtWidgets
+    QtWidgets.QMessageBox.critical(None, "CAM library installer", str(_exc))

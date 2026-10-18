@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "collections": [
+    {
+      "id": "jobber-fractional-118",
+      "name": "Jobber Fractional Drills - 118deg",
+      "category": "drills",
+      "directory": "drills/fractional-118",
+      "expected_count": 32,
+      "source": {
+        "attribution": "User-supplied imperial jobber collection; original author/data license not supplied.",
+        "redistribution": "unverified",
+        "urls": []
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "HSS jobber drill, 118 degree point, 2 flutes",
+        "accuracy": "generic",
+        "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "jobber-numbered-118",
+      "name": "Jobber Numbered Drills - 118deg",
+      "category": "drills",
+      "directory": "drills/numbered-118",
+      "expected_count": 60,
+      "source": {
+        "attribution": "User-supplied imperial jobber collection; original author/data license not supplied.",
+        "redistribution": "unverified",
+        "urls": []
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "HSS jobber drill, 118 degree point, 2 flutes",
+        "accuracy": "generic",
+        "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "jobber-letter-118",
+      "name": "Jobber Letter Drills - 118deg",
+      "category": "drills",
+      "directory": "drills/letter-118",
+      "expected_count": 26,
+      "source": {
+        "attribution": "User-supplied imperial jobber collection; original author/data license not supplied.",
+        "redistribution": "unverified",
+        "urls": []
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "HSS jobber drill, 118 degree point, 2 flutes",
+        "accuracy": "generic",
+        "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "jobber-metric-118",
+      "name": "Jobber Metric Drills - 118deg",
+      "category": "drills",
+      "directory": "drills/metric-118",
+      "expected_count": 121,
+      "source": {
+        "attribution": "User's installed FreeCAD 1.1.3 Jobber Metric Drills library; original author/catalog not supplied.",
+        "redistribution": "unverified",
+        "urls": [],
+        "recovered_library_id": "2400f95a-837b-4b8f-be69-239007f417e4"
+      },
+      "units": "metric",
+      "geometry": {
+        "description": "HSS metric jobber drills, 1.0\u201313.0 mm by 0.1 mm, 118 degree point, 2 flutes",
+        "accuracy": "provisional",
+        "notes": "Copied byte-for-byte from the user's installed FreeCAD 1.1.3 Flatpak Jobber Metric Drills library. Diameters run from 1.0 to 13.0 mm in 0.1 mm increments; 118 degree point, 2 flutes, HSS. Tool names reference DIN338, but no original catalog, measurements, author, or dimension-source documentation was available. Overall and cutting-edge lengths have not been independently verified. Treat geometry as provisional and unsuitable for collision checking. Redistribution rights remain unverified. Existing installed tools and numbers were not changed."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "pcb-micro-118-assumed",
+      "name": "PCB Micro Drills - 118deg Assumed - Carbide",
+      "category": "drills",
+      "directory": "drills/pcb-micro-118-assumed",
+      "expected_count": 36,
+      "source": {
+        "attribution": "User-supplied PCB set citing Kechtek MC, Amony UPX, and representative YAMAMOTO point angle. Rights unverified.",
+        "redistribution": "unverified",
+        "urls": [
+          "https://www.hmntool.com/upx-1-8-inch-shank-micro-drills.html",
+          "https://www.kechtek.com/product/pcb-cutting-tools/pcb-drills/pcb-micro-drill.html",
+          "https://ysk-drills.com/en/pcb/"
+        ]
+      },
+      "units": "metric",
+      "geometry": {
+        "description": "Carbide PCB drills, 0.10\u20133.175mm, 2 flutes; assumed 118 degree point",
+        "accuracy": "provisional",
+        "notes": "Requested 135deg collection was not supplied: all provided tools specify assumed 118deg. Generic mixed-source visualization. Nominal 3.175mm stepped shank is not modeled. 3.10mm and 3.175mm tools use placeholder flute/overall lengths. Other reference lengths use Kechtek MC and Amony UPX bands, not verified kit specifications. Unsafe for collision checking."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "deskar-hrc50-metric-2f",
+      "name": "DESKAR Metric Flat Endmills - HRC50 - 2 Flute",
+      "category": "endmills",
+      "directory": "endmills/deskar-hrc50-metric-2f",
+      "expected_count": 34,
+      "source": {
+        "attribution": "LIFENG / DESKAR 2023 English catalog, printed page 115 (PDF page 64 left), nominal dimension table visually transcribed on 2026-10-18. Regional brand-site copy. Catalog MODEL is a dimension reference, not a unique SKU.",
+        "redistribution": "unverified",
+        "urls": [
+          "https://deskar.su/upload/iblock/63f/oj1o4nyuedcg1ecg21djfjzc6ry65l0b/deskar_katalog_en.pdf"
+        ],
+        "catalog_sha256": "8f21d828433ce2549eafc18f648025108b0a804ba8ddfa992352ceae183d8d48"
+      },
+      "units": "metric",
+      "geometry": {
+        "description": "Carbide metric flat endmills, 2 flutes; 34 diameter/shank/length variants, 1\u201320 mm cutting diameter",
+        "accuracy": "provisional",
+        "notes": "D1 cutting diameter, D2 shank diameter, L1 flute length and L overall length are visually transcribed catalog nominal dimensions. Both flute counts are explicitly stated in the table heading. HRC50 describes the catalog workpiece application, not cutter hardness. Generic FreeCAD endmill shape does not reproduce helix, relief, tolerances or detailed shank transition. No physical cutter measurements or collision suitability established. Verify the purchased cutter and setup before machining. No feeds or speeds supplied."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "deskar-hrc50-metric-4f",
+      "name": "DESKAR Metric Flat Endmills - HRC50 - 4 Flute",
+      "category": "endmills",
+      "directory": "endmills/deskar-hrc50-metric-4f",
+      "expected_count": 34,
+      "source": {
+        "attribution": "LIFENG / DESKAR 2023 English catalog, printed page 115 (PDF page 64 left), nominal dimension table visually transcribed on 2026-10-18. Regional brand-site copy. Catalog MODEL is a dimension reference, not a unique SKU.",
+        "redistribution": "unverified",
+        "urls": [
+          "https://deskar.su/upload/iblock/63f/oj1o4nyuedcg1ecg21djfjzc6ry65l0b/deskar_katalog_en.pdf"
+        ],
+        "catalog_sha256": "8f21d828433ce2549eafc18f648025108b0a804ba8ddfa992352ceae183d8d48"
+      },
+      "units": "metric",
+      "geometry": {
+        "description": "Carbide metric flat endmills, 4 flutes; 34 diameter/shank/length variants, 1\u201320 mm cutting diameter",
+        "accuracy": "provisional",
+        "notes": "D1 cutting diameter, D2 shank diameter, L1 flute length and L overall length are visually transcribed catalog nominal dimensions. Both flute counts are explicitly stated in the table heading. HRC50 describes the catalog workpiece application, not cutter hardness. Generic FreeCAD endmill shape does not reproduce helix, relief, tolerances or detailed shank transition. No physical cutter measurements or collision suitability established. Verify the purchased cutter and setup before machining. No feeds or speeds supplied."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "endmills-imperial-2f",
+      "name": "Imperial Flat Endmills - 2 Flute",
+      "category": "endmills",
+      "directory": "endmills/imperial-2f",
+      "expected_count": 15,
+      "source": {
+        "attribution": "Not supplied",
+        "redistribution": "missing",
+        "urls": []
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "Not supplied",
+        "accuracy": "unavailable",
+        "notes": "No source definitions supplied."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "missing"
+    },
+    {
+      "id": "endmills-imperial-4f",
+      "name": "Imperial Flat Endmills - 4 Flute",
+      "category": "endmills",
+      "directory": "endmills/imperial-4f",
+      "expected_count": 15,
+      "source": {
+        "attribution": "Not supplied",
+        "redistribution": "missing",
+        "urls": []
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "Not supplied",
+        "accuracy": "unavailable",
+        "notes": "No source definitions supplied."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "missing"
+    },
+    {
+      "id": "harvey-imperial-60",
+      "name": "Harvey Imperial Threadmills - 60deg",
+      "category": "threadmills",
+      "directory": "threadmills/harvey-imperial",
+      "expected_count": 15,
+      "source": {
+        "attribution": "User-supplied Harvey Tool single-form imperial collection; catalog references in original CSV. Redistribution rights unverified.",
+        "redistribution": "unverified",
+        "urls": [
+          "https://www.harveytool.com/"
+        ]
+      },
+      "units": "imperial",
+      "geometry": {
+        "description": "Carbide single form thread mills, 60 degree cutting angle, 2 flutes",
+        "accuracy": "provisional",
+        "notes": "Manufacturer values are transcribed, not independently verified. NeckLength uses maximum threading depth as a provisional proxy, not actual neck length. Crest=0.10mm comes from a FreeCAD sample, not Harvey specifications. Generic tooth profile; unsafe for collision checking."
+      },
+      "compatible_versions": [
+        "1.1.x"
+      ],
+      "status": "available"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "id": "51f601cf-524d-41d2-81d0-004121daa830",
+  "name": "Harvey 993910-C3 | #4 minimum-series | 60deg Single Form",
+  "shape": "thread-mill.fcstd",
+  "shape-type": "ThreadMill",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Crest": "0.10 mm",
+    "Diameter": "2.0320 mm",
+    "Flutes": 2,
+    "Length": "50.8000 mm",
+    "Material": "Carbide",
+    "NeckDiameter": "1.0160 mm",
+    "NeckLength": "12.7000 mm",
+    "ShankDiameter": "4.7625 mm",
+    "SpindleDirection": "Forward",
+    "cuttingAngle": "60.00°"
+  },
+  "attribute": {}
+}

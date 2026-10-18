@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "4e5a5f64-4d71-5ec6-a135-25090231a5f9",
+  "name": "Drill O (0.3160 in) - HSS Jobber 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "80.9625 mm",
+    "Diameter": "8.0264 mm",
+    "Flutes": 2,
+    "Length": "114.3 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

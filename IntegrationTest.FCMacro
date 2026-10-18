@@ -1,0 +1,92 @@
+# API smoke test for FreeCAD 1.1.x. Creates then deletes one temporary library
+# and three synthetic tool assets. No production collection data is modified.
+import pathlib
+import sys
+import tempfile
+import json
+import uuid
+import traceback
+import FreeCAD as App
+
+
+def integration_test():
+    candidates = [pathlib.Path(globals().get('__file__', sys._getframe().f_code.co_filename)).resolve().parent,
+                  pathlib.Path(App.getUserMacroDir()), pathlib.Path.cwd()]
+    root = next((p for base in candidates for p in (base, base.parent)
+                 if (p / 'src/freecad_cam_libraries/compatibility.py').is_file()), None)
+    if root is None:
+        raise RuntimeError('Keep IntegrationTest.FCMacro at the repository root and run it there.')
+    sys.path.insert(0, str(root / 'src'))
+    # FreeCAD retains modules after a failed macro execution. Reload project
+    # modules so a rerun uses fixes from disk without restarting the application.
+    for name in list(sys.modules):
+        if name == 'freecad_cam_libraries' or name.startswith('freecad_cam_libraries.'):
+            del sys.modules[name]
+    from freecad_cam_libraries.compatibility import FreeCADAdapter
+    from freecad_cam_libraries.validation import validate_tool
+    from freecad_cam_libraries.manifest import read_json
+    adapter = FreeCADAdapter()
+    App.Console.PrintMessage("Integration test: FreeCAD " + ".".join(App.Version()[:3]) + "\n")
+    lib_id = str(uuid.uuid4())
+    if adapter.library_raw(lib_id) is not None:
+        raise RuntimeError('Unexpected temporary library UUID collision')
+    created = []
+    cleanup_errors = []
+    try:
+        with tempfile.TemporaryDirectory(prefix='freecad-cam-smoke-') as folder:
+            payload = {'version': 1, 'label': 'TEMP CAM installer smoke test ' + lib_id, 'tools': []}
+            raw = None
+            for number, (shape, kind, extra) in enumerate([
+                ('drill.fcstd', 'Drill', {'CuttingEdgeHeight':'10 mm','TipAngle':'118°'}),
+                ('endmill.fcstd', 'Endmill', {'CuttingEdgeHeight':'10 mm','ShankDiameter':'3 mm'}),
+                ('thread-mill.fcstd', 'ThreadMill', {'NeckDiameter':'2 mm','NeckLength':'10 mm',
+                    'ShankDiameter':'3 mm','Crest':'0.1 mm','cuttingAngle':'60°'}),
+            ], start=1):
+                ident = str(uuid.uuid4())
+                if adapter.tool_data(ident) is not None:
+                    raise RuntimeError('Unexpected temporary tool UUID collision')
+                data = {'version':2, 'id':ident, 'name':'SYNTHETIC TEST ONLY '+kind,
+                        'shape':shape, 'shape-type':kind, 'attribute':{},
+                        'parameter':dict({'Diameter':'3 mm','Length':'40 mm','Flutes':2,'Material':'Carbide'}, **extra)}
+                path = pathlib.Path(folder)/(ident+'.fctb')
+                path.write_text(json.dumps(data),encoding='utf-8')
+                tool = validate_tool(path)
+                prepared = adapter.prepare(tool)
+                created.append(ident)  # Include partial writes in cleanup.
+                adapter.register(tool, prepared)
+                payload['tools'].append({'nr':number,'path':ident+'.fctb'})
+                raw = adapter.save_library(lib_id, payload, raw)
+                assert adapter.tool_data(ident)['id'] == ident, 'registered ID mismatch'
+            library = adapter.assets.get('toolbitlibrary://'+lib_id)
+            assert {b.get_id() for b in library.get_bits()} == set(created), 'resolved library membership mismatch'
+            assert [library.get_bit_no_from_bit(b) for b in library.get_bits()] == [1,2,3], 'number mismatch'
+            assert read_json(adapter.library_raw(lib_id)) == payload, 'saved library mismatch'
+            App.Console.PrintMessage('PASS: three shape types registered, saved and reloaded with numbers 1, 2, 3.\n')
+    finally:
+        # Delete library first; only delete this test's previously absent UUIDs.
+        try:
+            if adapter.library_raw(lib_id) is not None:
+                adapter.remove_test_asset('toolbitlibrary',lib_id)
+        except Exception as exc:
+            cleanup_errors.append('library '+lib_id+': '+str(exc))
+        if not cleanup_errors:
+            for ident in created:
+                try:
+                    if adapter.assets.exists('toolbit://'+ident,store='local'):
+                        adapter.remove_test_asset('toolbit',ident)
+                except Exception as exc:
+                    cleanup_errors.append('tool '+ident+': '+str(exc))
+        else:
+            cleanup_errors.append('Retained tool IDs to preserve library dependencies: '+', '.join(created))
+        if cleanup_errors:
+            App.Console.PrintError('CLEANUP INCOMPLETE:\n'+'\n'.join(cleanup_errors)+'\n')
+        else:
+            App.Console.PrintMessage('Temporary library and tool assets cleaned up.\n')
+    if cleanup_errors:
+        raise RuntimeError('Integration cleanup failed; see Report view')
+
+
+try:
+    integration_test()
+except Exception:
+    App.Console.PrintError(traceback.format_exc())

@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "f7925029-7dab-5be6-8208-23e3a7f5d8ef",
+  "name": "Drill 8.2 mm - HSS Jobber DIN338 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "75 mm",
+    "Diameter": "8.2 mm",
+    "Flutes": 2,
+    "Length": "117 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

@@ -1,0 +1,16 @@
+{
+  "attribute": {},
+  "id": "0da75cb0-dae2-5337-8b09-6efc7e964725",
+  "name": "DESKAR HRC50 Flat 12*12*30*75 mm | 4 Flute",
+  "parameter": {
+    "CuttingEdgeHeight": "30 mm",
+    "Diameter": "12 mm",
+    "Flutes": 4,
+    "Length": "75 mm",
+    "Material": "Carbide",
+    "ShankDiameter": "12 mm"
+  },
+  "shape": "endmill.fcstd",
+  "shape-type": "Endmill",
+  "version": 2
+}

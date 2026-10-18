@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "b6c16caa-9685-57b2-8169-ee88df32156d",
+  "name": "Drill 1/4 in (0.2500 in) - HSS Jobber 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "69.85 mm",
+    "Diameter": "6.35 mm",
+    "Flutes": 2,
+    "Length": "101.6 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

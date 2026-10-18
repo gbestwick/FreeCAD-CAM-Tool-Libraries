@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freecad-cam-libraries"
+version = "0.1.0"
+description = "Manifest-driven, non-destructive FreeCAD 1.1 CAM tool library installer"
+requires-python = ">=3.10"
+license = {text = "MIT (original code only)"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

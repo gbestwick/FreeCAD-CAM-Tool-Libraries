@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "94b02452-25c4-5342-8a64-4649694956f0",
+  "name": "Drill #40 (0.0980 in) - HSS Jobber 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "34.925 mm",
+    "Diameter": "2.4892 mm",
+    "Flutes": 2,
+    "Length": "60.325 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

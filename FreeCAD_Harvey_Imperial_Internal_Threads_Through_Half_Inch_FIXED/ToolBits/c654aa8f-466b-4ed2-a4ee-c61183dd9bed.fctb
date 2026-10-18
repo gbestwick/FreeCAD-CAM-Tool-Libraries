@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "id": "c654aa8f-466b-4ed2-a4ee-c61183dd9bed",
+  "name": "Harvey 822745-C3 | #12 minimum-series | 60deg Single Form",
+  "shape": "thread-mill.fcstd",
+  "shape-type": "ThreadMill",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Crest": "0.10 mm",
+    "Diameter": "4.0640 mm",
+    "Flutes": 4,
+    "Length": "63.5000 mm",
+    "Material": "Carbide",
+    "NeckDiameter": "2.4130 mm",
+    "NeckLength": "12.7000 mm",
+    "ShankDiameter": "6.3500 mm",
+    "SpindleDirection": "Forward",
+    "cuttingAngle": "60.00°"
+  },
+  "attribute": {}
+}

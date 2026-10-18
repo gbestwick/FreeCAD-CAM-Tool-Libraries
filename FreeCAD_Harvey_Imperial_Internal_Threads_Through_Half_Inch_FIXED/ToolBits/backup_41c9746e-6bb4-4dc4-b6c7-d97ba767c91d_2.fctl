@@ -1,0 +1,18 @@
+{
+  "label": "Harvey ThreadMils",
+  "tools": [
+    {
+      "nr": 1,
+      "path": "08dec0fe-43c7-4a77-94ce-27bfa93b152d.fctb"
+    },
+    {
+      "nr": 2,
+      "path": "3a2ba961-4a72-41ec-96f1-1a56a4609122.fctb"
+    },
+    {
+      "nr": 3,
+      "path": "51f601cf-524d-41d2-81d0-004121daa830.fctb"
+    }
+  ],
+  "version": 1
+}

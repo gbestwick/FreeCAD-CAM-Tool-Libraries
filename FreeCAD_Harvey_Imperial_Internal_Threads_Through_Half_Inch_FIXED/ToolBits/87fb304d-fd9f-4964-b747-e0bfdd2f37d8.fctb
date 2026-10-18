@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "id": "87fb304d-fd9f-4964-b747-e0bfdd2f37d8",
+  "name": "Harvey 41404 | #1 minimum-series | 60deg Single Form",
+  "shape": "thread-mill.fcstd",
+  "shape-type": "ThreadMill",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Crest": "0.10 mm",
+    "Diameter": "1.3716 mm",
+    "Flutes": 2,
+    "Length": "38.1000 mm",
+    "Material": "Carbide",
+    "NeckDiameter": "0.8128 mm",
+    "NeckLength": "4.7498 mm",
+    "ShankDiameter": "3.1750 mm",
+    "SpindleDirection": "Forward",
+    "cuttingAngle": "60.00°"
+  },
+  "attribute": {}
+}

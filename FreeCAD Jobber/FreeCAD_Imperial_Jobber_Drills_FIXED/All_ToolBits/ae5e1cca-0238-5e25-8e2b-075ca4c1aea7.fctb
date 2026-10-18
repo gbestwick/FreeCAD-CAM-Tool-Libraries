@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "ae5e1cca-0238-5e25-8e2b-075ca4c1aea7",
+  "name": "Drill K (0.2810 in) - HSS Jobber 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "74.6125 mm",
+    "Diameter": "7.1374 mm",
+    "Flutes": 2,
+    "Length": "107.95 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

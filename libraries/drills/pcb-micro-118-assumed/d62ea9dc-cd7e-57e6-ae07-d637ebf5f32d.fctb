@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "d62ea9dc-cd7e-57e6-ae07-d637ebf5f32d",
+  "name": "PCB Micro Drill 1.400 mm - Carbide - 1/8in Shank",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "8.000 mm",
+    "Diameter": "1.400 mm",
+    "Flutes": 2,
+    "Length": "38.00 mm",
+    "Material": "Carbide",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

@@ -1,0 +1,19 @@
+{
+  "attribute": {},
+  "id": "4c7c0cc6-a226-5b66-b35a-90ba2a4ea53c",
+  "name": "Drill 11.6 mm - HSS Jobber DIN338 118deg",
+  "parameter": {
+    "Chipload": "0.00 mm",
+    "Coating": "Uncoated",
+    "CuttingEdgeHeight": "94 mm",
+    "Diameter": "11.6 mm",
+    "Flutes": 2,
+    "Length": "142 mm",
+    "Material": "HSS",
+    "SpindleDirection": "Forward",
+    "TipAngle": "118.00°"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

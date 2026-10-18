@@ -1,0 +1,19 @@
+Internal thread reference,UNC (TPI),UNF (TPI),Harvey catalog part,Note
+#0,80,,54202-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#1,64,72,41404,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#2,56,64,822706-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#3,48,56,54208-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#4,40,48,993910-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#5,40,44,822715-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#6,32,40,822720-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#8,32,36,820330-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#10,24,32,820340-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#12,24,28,822745-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+1/4,20,28,822750-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+5/16,18,24,822755-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+3/8,16,24,822760-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+7/16,14,20,71065-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+1/2,13,20,822770-C3,"Reference-size selection only; confirm pitch, pilot hole and clearance"
+#7,,,822720-C3,Nonstandard size; smaller cutter candidate only; verify compatibility
+#9,,,820330-C3,Nonstandard size; smaller cutter candidate only; verify compatibility
+#11,,,820340-C3,Nonstandard size; smaller cutter candidate only; verify compatibility
