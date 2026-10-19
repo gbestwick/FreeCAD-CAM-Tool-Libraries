@@ -1,9 +1,9 @@
-"""FreeCAD 1.1 boundary, verified against upstream tag 1.1.0.
+"""FreeCAD CAM boundary for 1.1.x and the 27.1.x development family.
 
 Only public asset-manager/model/serializer methods are used. No internal files
 or database tables are edited. Importing this module works outside FreeCAD.
 """
-from .manifest import read_json
+from .manifest import read_json, SUPPORTED_VERSIONS
 
 
 def check_version(version):
@@ -11,8 +11,10 @@ def check_version(version):
         major, minor = int(version[0]), int(version[1])
     except (ValueError, TypeError, IndexError) as exc:
         raise RuntimeError(f"Unrecognized FreeCAD version: {version}") from exc
-    if (major, minor) != (1, 1):
-        raise RuntimeError(f"Requires FreeCAD 1.1.x; found {'.'.join(map(str, version[:3]))}")
+    family = f"{major}.{minor}.x"
+    if family not in SUPPORTED_VERSIONS:
+        raise RuntimeError(f"Requires FreeCAD 1.1.x or 27.1.x development; found {'.'.join(map(str, version[:3]))}")
+    return family
 
 
 class FreeCADAdapter:

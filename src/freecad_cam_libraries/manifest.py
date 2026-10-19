@@ -5,6 +5,9 @@ import json
 import re
 
 
+SUPPORTED_VERSIONS = ("1.1.x", "27.1.x")
+
+
 class ManifestError(ValueError):
     pass
 
@@ -87,8 +90,8 @@ def load_manifest(path):
         if row["status"] not in ("available", "missing"):
             raise ManifestError("status must be available or missing")
         versions = row["compatible_versions"]
-        if not isinstance(versions, list) or not versions or any(v != "1.1.x" for v in versions):
-            raise ManifestError("Only compatible_versions [1.1.x] is supported")
+        if not isinstance(versions, list) or not versions or any(v not in SUPPORTED_VERSIONS for v in versions):
+            raise ManifestError("compatible_versions must contain supported families: 1.1.x, 27.1.x")
         source, geometry = row["source"], row["geometry"]
         if not isinstance(source, dict) or any(not isinstance(source.get(k), str) or not source[k]
                                                for k in ("attribution", "redistribution")):

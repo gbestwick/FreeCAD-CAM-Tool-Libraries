@@ -93,7 +93,7 @@ def memberships(data):
 
 class Installer:
     def __init__(self, adapter, backup_directory, version=(1, 1, 0)):
-        check_version(version)
+        self.version_family = check_version(version)
         self.adapter = adapter
         self.backup_directory = Path(backup_directory)
 
@@ -117,8 +117,8 @@ class Installer:
         # even if both files are identical: manifests must have one owner per ID.
         for collection in collections:
             try:
-                if "1.1.x" not in collection.compatible_versions:
-                    raise ValueError("Collection does not support FreeCAD 1.1.x")
+                if self.version_family not in collection.compatible_versions:
+                    raise ValueError(f"Collection does not support FreeCAD {self.version_family}")
                 available, count = collection.availability()
                 if not available:
                     raise ValueError(f"Unavailable/incomplete collection: found {count}, expected {collection.expected_count}")

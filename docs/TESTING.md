@@ -2,7 +2,7 @@
 
 ## Executed in this development environment
 
-- Python standard-library unittest suite: **72 tests passed**.
+- Python standard-library unittest suite: **73 tests passed**.
 - All 358 curated definitions parse, have unique canonical UUIDs matching filenames, and pass their shape-specific validators.
 - Curated source bytes match the original files and recorded SHA-256 hashes.
 - All jobber, PCB, and Harvey CSV dimension transcriptions match the supplied `.fctb` values. This is internal consistency, not independent manufacturer/physical verification.
@@ -82,3 +82,25 @@ Eight new source-generator safeguards cover exact reviewed dimensions and native
 ## DESKAR catalog generation checks
 
 Seven tests check all 34 reviewed table rows and both flute options against deterministic production outputs, required native properties, same-diameter variants with different shanks/lengths, invalid/unreviewed input rejection, byte-identical regeneration, preflight preservation of customized output, non-mutating check mode, and collection symlink rejection. Actual FreeCAD 1.1.3 full-inventory tests additionally registered and reloaded all 68 new endmills as part of the 358-tool run above. Nominal dimensions were visually reviewed against catalog printed p115; these tests do not establish physical cutter accuracy or collision suitability.
+
+## Local Pixi development build — 2026-10-19
+
+The local `/home/gord/FreeCAD-Local` checkout (HEAD `8fcd99b158`) reports
+`FreeCAD.Version() = ['27', '1', '0', 'Dev Build', 'Dev Build', 'Dev Build']`.
+Using its existing `build/relWithDebInfo/bin/FreeCADCmd` through `pixi run --frozen`,
+the three-shape smoke test/cleanup, dry-run, 358-tool installation into eight
+libraries, repeat-install (all 358 skipped, library bytes unchanged), and
+new-process reload all passed. Preferences and CAM assets were isolated under
+`.test-runs/pixi-native-acff7f86-3474-4f73-9da8-9e6550cfe429/`; the user's normal
+profile and the FreeCAD checkout were not modified by the test harness.
+
+Reproduce against an existing development build:
+
+```bash
+python3 tests/run_native_pixi.py /home/gord/FreeCAD-Local
+```
+
+The version allowlist explicitly supports `1.1.x` and `27.1.x`. Collection
+compatibility is checked against the running family; future unrelated versions
+remain rejected. This verifies the tested local development build, not all future
+27.1 snapshots. Interactive GUI behavior on this build still needs user testing.

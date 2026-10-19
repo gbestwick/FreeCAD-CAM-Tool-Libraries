@@ -34,7 +34,7 @@ def launch(root):
             self.setWindowTitle("FreeCAD CAM Tool Library Manager")
             self.resize(980, 760)
             layout = QtWidgets.QVBoxLayout(self)
-            banner = QtWidgets.QLabel("FreeCAD 1.1.x • Preview first • Existing tools and tool numbers are preserved")
+            banner = QtWidgets.QLabel(f"FreeCAD {'.'.join(App.Version()[:3])} • Preview first • Existing tools and tool numbers are preserved")
             banner.setWordWrap(True); layout.addWidget(banner)
             self.tree = QtWidgets.QTreeWidget()
             self.tree.setHeaderLabels(["Collection", "Files / Expected", "Geometry"])

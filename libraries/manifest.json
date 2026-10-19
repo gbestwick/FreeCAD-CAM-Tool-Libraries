@@ -19,7 +19,8 @@
         "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -41,7 +42,8 @@
         "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -63,7 +65,8 @@
         "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -86,7 +89,8 @@
         "notes": "Copied byte-for-byte from the user's installed FreeCAD 1.1.3 Flatpak Jobber Metric Drills library. Diameters run from 1.0 to 13.0 mm in 0.1 mm increments; 118 degree point, 2 flutes, HSS. Tool names reference DIN338, but no original catalog, measurements, author, or dimension-source documentation was available. Overall and cutting-edge lengths have not been independently verified. Treat geometry as provisional and unsuitable for collision checking. Redistribution rights remain unverified. Existing installed tools and numbers were not changed."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -112,7 +116,8 @@
         "notes": "Requested 135deg collection was not supplied: all provided tools specify assumed 118deg. Generic mixed-source visualization. Nominal 3.175mm stepped shank is not modeled. 3.10mm and 3.175mm tools use placeholder flute/overall lengths. Other reference lengths use Kechtek MC and Amony UPX bands, not verified kit specifications. Unsafe for collision checking."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -137,7 +142,8 @@
         "notes": "D1 cutting diameter, D2 shank diameter, L1 flute length and L overall length are visually transcribed catalog nominal dimensions. Both flute counts are explicitly stated in the table heading. HRC50 describes the catalog workpiece application, not cutter hardness. Generic FreeCAD endmill shape does not reproduce helix, relief, tolerances or detailed shank transition. No physical cutter measurements or collision suitability established. Verify the purchased cutter and setup before machining. No feeds or speeds supplied."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -162,7 +168,8 @@
         "notes": "D1 cutting diameter, D2 shank diameter, L1 flute length and L overall length are visually transcribed catalog nominal dimensions. Both flute counts are explicitly stated in the table heading. HRC50 describes the catalog workpiece application, not cutter hardness. Generic FreeCAD endmill shape does not reproduce helix, relief, tolerances or detailed shank transition. No physical cutter measurements or collision suitability established. Verify the purchased cutter and setup before machining. No feeds or speeds supplied."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     },
@@ -184,7 +191,8 @@
         "notes": "No source definitions supplied."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "missing"
     },
@@ -206,7 +214,8 @@
         "notes": "No source definitions supplied."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "missing"
     },
@@ -230,7 +239,8 @@
         "notes": "Manufacturer values are transcribed, not independently verified. NeckLength uses maximum threading depth as a provisional proxy, not actual neck length. Crest=0.10mm comes from a FreeCAD sample, not Harvey specifications. Generic tooth profile; unsafe for collision checking."
       },
       "compatible_versions": [
-        "1.1.x"
+        "1.1.x",
+        "27.1.x"
       ],
       "status": "available"
     }

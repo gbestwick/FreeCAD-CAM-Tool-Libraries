@@ -2,12 +2,12 @@
 
 A manifest-driven installer for FreeCAD CAM tool collections. Run one macro, select multiple collections, preview the changes, and install without creating libraries manually. Uses FreeCAD's Python environment and Qt bindings; no pip installation or external Python packages are needed.
 
-**Status: development build targeting FreeCAD 1.1.x.** Core tests pass outside FreeCAD. Native three-shape registration/save/reload/cleanup and a 358-tool install/repeat/new-process reload have passed in **FreeCAD 1.1.3 Flatpak on Linux** using an isolated test profile. The user also reported a successful three-shape GUI integration macro run. The installer dialog, GUI restart visibility, Windows, native Linux, and macOS remain unverified. The supplied data has unresolved redistribution permissions; this checkout is not cleared for public data distribution. See [data provenance](docs/DATA_PROVENANCE.md) and [release checklist](docs/RELEASE_CHECKLIST.md).
+**Status: development build supporting FreeCAD 1.1.x and the 27.1.x development family.** Core tests pass outside FreeCAD. Native three-shape registration/save/reload/cleanup and a 358-tool install/repeat/new-process reload have passed in **FreeCAD 1.1.3 Flatpak on Linux** using an isolated test profile. The same native checks passed with the local Pixi **27.1.0 development build** on 2026-10-19. The user also reported a successful three-shape GUI integration macro run. The installer dialog, GUI restart visibility, Windows, native Linux, and macOS remain unverified. The supplied data has unresolved redistribution permissions; this checkout is not cleared for public data distribution. See [data provenance](docs/DATA_PROVENANCE.md) and [release checklist](docs/RELEASE_CHECKLIST.md).
 
 ## Use
 
 1. Clone or download and extract the **complete repository** to a writable, accessible location. Keep `InstallLibraries.FCMacro`, `src/`, and `libraries/` together. Do not copy just the macro into your macro directory.
-2. Back up your FreeCAD CAM assets as described below. Open FreeCAD 1.1.x.
+2. Back up your FreeCAD CAM assets as described below. Open FreeCAD 1.1.x or 27.1.x development.
 3. Choose **Macro → Macros → Execute**, navigating to `InstallLibraries.FCMacro` in this extraction. If your FreeCAD build requires CAM to be loaded, select the CAM workbench first.
 4. Select collections individually or use **Select All Available**. Missing collections are disabled. Read the geometry notes in the preview area.
 5. Click **Preview Selected Libraries** to check duplicates and proposed tool numbers. **Dry-run** is checked by default and creates no installer assets or backups. FreeCAD's normal CAM startup may separately initialize or migrate assets.

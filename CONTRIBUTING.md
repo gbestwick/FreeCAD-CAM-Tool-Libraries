@@ -1,6 +1,6 @@
 # Contributing collections
 
-Use Python 3.10+ for development. The installer itself runs in FreeCAD 1.1.x with its bundled Python and Qt. No external runtime dependencies are allowed.
+Use Python 3.10+ for development. The installer itself runs in FreeCAD 1.1.x and 27.1.x development with its bundled Python and Qt. No external runtime dependencies are allowed.
 
 ## Add data without changing importer code
 
@@ -31,7 +31,7 @@ Example manifest entry (illustrative; it does not supply this missing collection
     "accuracy": "unavailable",
     "notes": "Definitions have not yet been supplied."
   },
-  "compatible_versions": ["1.1.x"],
+  "compatible_versions": ["1.1.x", "27.1.x"],
   "status": "missing"
 }
 ```

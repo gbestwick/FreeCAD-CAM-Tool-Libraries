@@ -90,6 +90,22 @@ class EngineTests(unittest.TestCase):
         self.backups = self.base / "backups"
         self.engine = Installer(self.assets, self.backups)
 
+    def test_development_family_uses_collection_compatibility(self):
+        engine = Installer(self.assets, self.backups, ('27', '1', '0', 'dev'))
+        report = engine.run([self.collection], dry_run=False)
+        self.assertTrue(report.errors)
+        self.assertIn('27.1.x', report.errors[0])
+        self.assertFalse(self.assets.writes)
+        collection = replace(self.collection, compatible_versions=('27.1.x',))
+        first = engine.run([collection], dry_run=False)
+        second = engine.run([collection], dry_run=False)
+        self.assertFalse(first.errors + second.errors)
+        self.assertEqual(first.tools_imported, 2)
+        self.assertEqual(second.tools_skipped, 2)
+        stable = self.engine.run([collection], dry_run=False)
+        self.assertTrue(stable.errors)
+        self.assertIn('1.1.x', stable.errors[0])
+
     def write(self, data):
         path = self.directory / (data['id'] + '.fctb')
         path.write_text(json.dumps(data))
@@ -357,8 +373,8 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaises(ValueError): memberships({'version':1,'label':'x','tools':[{'nr':1,'path':'../bad.fctb'}]})
 
     def test_versions(self):
-        for version in ((1,1,0),('1','1','3')):check_version(version)
-        for version in ((1,0,0),(1,2,0),(2,1,0),(),('unknown',)):
+        for version in ((1,1,0),('1','1','3'),(27,1,0),('27','1','0','dev')):check_version(version)
+        for version in ((1,0,0),(1,2,0),(2,1,0),(27,0,0),(27,2,0),(),('unknown',)):
             with self.assertRaises(RuntimeError):check_version(version)
 
 

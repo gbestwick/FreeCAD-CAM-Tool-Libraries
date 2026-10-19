@@ -1,4 +1,4 @@
-# API smoke test for FreeCAD 1.1.x. Creates then deletes one temporary library
+# API smoke test for FreeCAD 1.1.x / 27.1.x development. Creates then deletes one temporary library
 # and three synthetic tool assets. No production collection data is modified.
 import pathlib
 import sys
