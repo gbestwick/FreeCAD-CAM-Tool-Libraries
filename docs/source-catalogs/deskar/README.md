@@ -24,7 +24,7 @@ python3 tools/generate_deskar_endmills.py docs/source-catalogs/deskar/endmills-r
 
 Omit `--check` only to create missing deterministic files. The generator preflights both collections and refuses customized definitions, stale tool files, and symlink collection/tool outputs. It never accesses the installed FreeCAD store. UUIDs identify the reviewed catalog family, model reference and flute option. Changes to source identity require explicit review; no existing installed asset is overwritten by the installer.
 
-The earlier proposed 25 metric tools per flute count was a planning estimate. These real 34-row collections replace those two empty manifest slots, increasing the expected total from 370 to **388**, with **358 available**. The **30 imperial endmills remain missing and disabled**: metric sizes are not renamed as fractional cutters. A readable, verified imperial source is still needed.
+The earlier proposed 25 metric tools per flute count was a planning estimate. These real 34-row collections replace those two empty manifest slots, increasing the expected total from 370 to **388**, with **358 available at that stage**. The subsequent #61–#80 drill extension brings current totals to **408 expected / 378 available**. The **30 imperial endmills remain missing and disabled**: metric sizes are not renamed as fractional cutters. A readable, verified imperial source is still needed.
 
 ## Accuracy and rights
 

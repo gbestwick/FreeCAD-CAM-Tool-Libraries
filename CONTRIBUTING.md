@@ -51,3 +51,5 @@ Synthetic tools in tests and IntegrationTest.FCMacro must never be promoted into
 ## Code changes
 
 Keep FreeCAD imports in the compatibility boundary and GUI/entry points. Use injected adapter mocks for core logic tests and meaningful failure/recovery cases. Add native integration coverage when changing API calls. Preserve exact source geometry and existing user numbers. Do not implement automatic destructive uninstall, UUID replacement, silent equivalence merging, or storage-file editing.
+
+When refining a collection name, keep its stable ID and record only its exact previously shipped labels in optional `legacy_names`. This allows existing libraries to receive missing tools while preserving labels and tool numbers. Do not add broad aliases or guessed user names. Include verified size endpoints and a step only for uniformly spaced collections; never infer missing sizes from the range.

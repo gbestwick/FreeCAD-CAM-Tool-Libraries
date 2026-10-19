@@ -5,14 +5,14 @@ Completed locally:
 - Manifest-driven core installer, compatibility boundary, and Qt macro entry point.
 - Automatic native library creation/save path and UUID tool registration path implemented against inspected 1.1.0 APIs.
 - Preservation, duplicate policies, deterministic numbering, dry-run, logs/results, exact library backups, and recovery journal.
-- 290 unchanged source definitions curated (169 from supplied folders, 121 recovered from the installed metric library); 68 reviewed DESKAR metric endmills added; all 388 expected slots represented with missing collections disabled.
+- 290 unchanged source definitions curated (169 from supplied folders, 121 recovered from the installed metric library); 68 reviewed DESKAR metric endmills added; 20 reviewed numbered drills added; all 408 expected slots represented with missing collections disabled.
 - Standard-library tests and inventory audit pass. GUI source compiles; its runtime behavior is unverified.
 - Usage, contributions, API evidence, provenance, backup/removal/recovery, and testing documentation.
 
 Remaining before claiming a first release:
 
 - [x] Run native three-shape IntegrationTest.FCMacro logic in FreeCADCmd 1.1.3 Flatpak; verify outputs and cleanup.
-- [x] Run 358-tool native install/repeat and full reload in a new FreeCADCmd process against an isolated profile.
+- [x] Run 378-tool native install/repeat and full reload in a new FreeCADCmd process against an isolated profile.
 - [ ] Rerun the updated integration macro interactively and verify the GUI workflows.
 - [ ] Run full GUI installation, custom-tool preservation, repeat-install, and restart-persistence acceptance tests.
 - [ ] Verify Windows, Linux native, Linux Flatpak, and macOS; record versions/builds.

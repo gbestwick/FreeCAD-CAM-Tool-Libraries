@@ -1,0 +1,17 @@
+{
+  "attribute": {},
+  "id": "d293ce29-464c-5143-be70-db1d8b23298c",
+  "name": "Drill #70 (0.0280 in) - HSS Jobber 118deg [PTD R18 018070]",
+  "parameter": {
+    "Coating": "Steam Oxide",
+    "CuttingEdgeHeight": "9.5250 mm",
+    "Diameter": "0.7112 mm",
+    "Flutes": 2,
+    "Length": "31.750 mm",
+    "Material": "HSS",
+    "TipAngle": "118\u00b0"
+  },
+  "shape": "drill.fcstd",
+  "shape-type": "Drill",
+  "version": 2
+}

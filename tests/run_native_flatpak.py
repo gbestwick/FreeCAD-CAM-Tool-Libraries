@@ -12,7 +12,7 @@ base=root/'.test-runs'/('native-'+str(uuid.uuid4()))
 base.mkdir()
 (root/'.test-runs/latest-native-run.txt').write_text(str(base))
 for name in ('config','data','temp'):(base/name).mkdir()
-for stage in ('smoke','install','reload'):
+for stage in ('smoke','install','reload','upgrade'):
  command=['flatpak','run',f'--env=FREECAD_USER_HOME={base}/config',f'--env=FREECAD_USER_DATA={base}/data',f'--env=FREECAD_USER_TEMP={base}/temp',f'--env=FREECAD_CAM_TEST_ROOT={base}',f'--env=FREECAD_CAM_TEST_STAGE={stage}','--command=FreeCADCmd','org.freecad.FreeCAD','-u',str(base/'user.cfg'),'-s',str(base/'system.cfg'),str(root/'tests/native_check.py')]
  with (base/(stage+'.log')).open('w') as stream:
   proc=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=300)

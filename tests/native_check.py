@@ -83,6 +83,34 @@ def main():
             count += len(bits)
         assert count == expected
         print(f'New-process reload verified {count} tools in {len(collections)} libraries.', flush=True)
+    elif stage == 'upgrade':
+        # Simulate a previous 60-tool numbered installation using its exact
+        # historical label. Keep registered new tools as orphans to also test
+        # relinking existing UUIDs, and preserve a deliberately custom number.
+        collection = next(c for c in collections if c.id == 'jobber-numbered-118')
+        old_ids = {p.stem for p in collection.files()
+                   if '[PTD R18 ' not in read_json(p.read_bytes())['name']}
+        assert len(old_ids) == 60
+        ident = library_id(collection.id)
+        before = adapter.library_raw(ident)
+        data = read_json(before)
+        data['label'] = collection.legacy_names[0]
+        data['tools'] = [r for r in data['tools'] if r['path'][:-5] in old_ids]
+        data['tools'][0]['nr'] = 500
+        original_numbers = {r['path']: r['nr'] for r in data['tools']}
+        adapter.save_library(ident, data, before)
+        engine = Installer(adapter, base / 'upgrade-backups', App.Version())
+        upgraded = engine.run([collection], False, equivalent_policy='distinct')
+        assert not upgraded.errors and upgraded.tools_imported == 20, upgraded.summary()
+        saved = read_json(adapter.library_raw(ident))
+        assert saved['label'] == collection.legacy_names[0]
+        numbers = {r['path']: r['nr'] for r in saved['tools']}
+        assert len(numbers) == 80
+        assert original_numbers == {p: numbers[p] for p in original_numbers}
+        assert sorted(n for p,n in numbers.items() if p not in original_numbers) == list(range(501,521))
+        repeat = engine.run([collection], False, equivalent_policy='distinct')
+        assert not repeat.errors and repeat.tools_skipped == 80, repeat.summary()
+        print('PASS legacy numbered library upgrade: 20 linked; old label and 60 custom numbers preserved.', flush=True)
     else:
         raise ValueError('Unknown test stage: ' + stage)
     result = {'stage': stage, 'result': 'PASS', 'version': App.Version(),

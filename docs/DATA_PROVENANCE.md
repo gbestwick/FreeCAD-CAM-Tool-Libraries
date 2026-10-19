@@ -6,10 +6,11 @@ Inspection date: 2026-10-18. No license or redistribution grant was present in a
 
 | Dataset | Supplied evidence | Verification status | Release action |
 |---|---|---|---|
-| 118 imperial jobber drills | README, Drill_Index.csv, deterministic UUID definitions | CSV transcription consistent; flute/overall lengths described as generic estimates; original authorship and data rights unknown | Establish original author/data license and dimension basis |
+| 118 originally supplied imperial jobber drills | README, Drill_Index.csv, deterministic UUID definitions | CSV transcription consistent; flute/overall lengths described as generic estimates; original authorship and data rights unknown | Establish original author/data license and dimension basis |
 | 36 PCB micro drills | README, Tool_Index.csv, references to Kechtek MC/Amony UPX/YAMAMOTO | CSV consistent; reference ranges mixed with generic sizes; assumed angle and placeholder lengths explicitly identified | Obtain provenance/permission; do not claim manufacturer-specific physical accuracy |
 | 15 Harvey thread mills | README, Harvey_Imperial_Tool_Index.csv with per-part URLs, Thread_Size_Lookup.csv | CSV consistent; NeckLength proxy and sample Crest not manufacturer-verified geometry | Obtain redistribution permission or reviewed independent-data basis before release |
 | 121 metric drills | Copied unchanged from installed FreeCAD 1.1.3 library; exact membership snapshot, SHA-256 hashes, derived index | 1.0–13.0 mm by 0.1 mm; 118°, 2 flutes, HSS; names reference DIN338 but original dimensions/source/license unverified | Establish author/data rights and dimension basis; geometry provisional |
+| 20 additional numbered jobber drills | Reviewed PTD R18 manufacturer-branded sheet mirrored by Syndigo; CSV, part IDs and source hash | #61–#80 nominal diameter/flute/overall lengths visually transcribed, not physically verified; original #1–#60 unchanged | Establish data redistribution basis before public release |
 | 68 DESKAR metric end mills | 2023 catalog printed p115 / PDF p64 left; reviewed nominal dimension CSV, source PDF hash and generator | 34 geometry variants, explicitly offered in both flute counts; generic native solid remains provisional | Establish data redistribution basis before public release |
 | 30 imperial end mills | No verified files/source | Absent | Supply verified definitions and provenance; do not substitute metric sizes |
 
@@ -39,4 +40,8 @@ At the user's request, research has begun on DREANIQUE manufacturer-specific end
 
 ## DESKAR metric endmills
 
-A readable LIFENG / DESKAR 2023 catalog was obtained from the regional brand site. Printed p115 supplies 34 nominal dimension variants in both two- and four-flute versions. All 68 generated definitions are enabled in the manifest. The [source review](source-catalogs/deskar/README.md) records exact source URL/hash, table locator, transcription scope, reproducible generation, geometry limitations and unresolved data rights. No complete PDF or page images are bundled. Original 290 source definitions remain byte-for-byte unchanged. Current totals: 358 available, 388 expected, 30 imperial endmills missing.
+A readable LIFENG / DESKAR 2023 catalog was obtained from the regional brand site. Printed p115 supplies 34 nominal dimension variants in both two- and four-flute versions. All 68 generated definitions are enabled in the manifest. The [source review](source-catalogs/deskar/README.md) records exact source URL/hash, table locator, transcription scope, reproducible generation, geometry limitations and unresolved data rights. No complete PDF or page images are bundled. Original 290 source definitions remain byte-for-byte unchanged. At that stage: 358 available, 388 expected, 30 imperial endmills missing.
+
+## Numbered extension and range names — 2026-10-19
+
+The [reviewed PTD R18 table](source-catalogs/numbered-extension/README.md) supplies the missing #61–#80 nominal definitions. The combined numbered collection has 80 tools. All previous 358 definitions retain exact bytes and UUIDs. The additional 20 hashes and source records extend `source-inventory.json`; original source packages and historical CSVs are unchanged. Public redistribution is still uncleared. Current totals: **378 available, 408 expected**, with 30 imperial endmills missing. Range-bearing collection names and exact historical aliases change destination discovery without silently renaming any existing library.

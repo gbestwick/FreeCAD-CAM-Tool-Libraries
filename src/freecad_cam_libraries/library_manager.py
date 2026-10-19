@@ -18,8 +18,9 @@ def next_number(numbers):
 def find_library(collection, libraries):
     ident = library_id(collection.id)
     by_id = [lib for lib in libraries if lib["id"] == ident]
-    by_name = [lib for lib in libraries if lib["label"] == collection.name]
-    if by_id and by_id[0]["label"] != collection.name:
+    accepted_names = (collection.name,) + collection.legacy_names
+    by_name = [lib for lib in libraries if lib["label"] in accepted_names]
+    if by_id and by_id[0]["label"] not in accepted_names:
         raise ValueError(f"Managed library {ident} was renamed; preserving it without changes")
     if len(by_name) > 1 or (by_id and by_name and by_id[0] is not by_name[0]):
         raise ValueError(f"Ambiguous destination library: {collection.name}")

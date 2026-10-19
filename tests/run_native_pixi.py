@@ -29,7 +29,7 @@ def main():
         (base / name).mkdir()
     env.update(FREECAD_USER_HOME=str(base/'config'), FREECAD_USER_DATA=str(base/'data'),
                FREECAD_USER_TEMP=str(base/'temp'), FREECAD_CAM_TEST_ROOT=str(base))
-    for stage in ('smoke', 'install', 'reload'):
+    for stage in ('smoke', 'install', 'reload', 'upgrade'):
         env['FREECAD_CAM_TEST_STAGE'] = stage
         command = ['pixi', 'run', '--frozen', str(binary), '-u', str(base/'user.cfg'),
                    '-s', str(base/'system.cfg'), str(root/'tests/native_check.py')]

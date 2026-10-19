@@ -2,7 +2,7 @@
 
 A manifest-driven installer for FreeCAD CAM tool collections. Run one macro, select multiple collections, preview the changes, and install without creating libraries manually. Uses FreeCAD's Python environment and Qt bindings; no pip installation or external Python packages are needed.
 
-**Status: development build supporting FreeCAD 1.1.x and the 27.1.x development family.** Core tests pass outside FreeCAD. Native three-shape registration/save/reload/cleanup and a 358-tool install/repeat/new-process reload have passed in **FreeCAD 1.1.3 Flatpak on Linux** using an isolated test profile. The same native checks passed with the local Pixi **27.1.0 development build** on 2026-10-19. The user also reported a successful three-shape GUI integration macro run. The installer dialog, GUI restart visibility, Windows, native Linux, and macOS remain unverified. The supplied data has unresolved redistribution permissions; this checkout is not cleared for public data distribution. See [data provenance](docs/DATA_PROVENANCE.md) and [release checklist](docs/RELEASE_CHECKLIST.md).
+**Status: development build supporting FreeCAD 1.1.x and the 27.1.x development family.** Core tests pass outside FreeCAD. Native three-shape registration/save/reload/cleanup and a 378-tool install/repeat/new-process reload have passed in **FreeCAD 1.1.3 Flatpak on Linux** using an isolated test profile. The same native checks passed with the local Pixi **27.1.0 development build** on 2026-10-19. The user also reported a successful three-shape GUI integration macro run. The installer dialog, GUI restart visibility, Windows, native Linux, and macOS remain unverified. The supplied data has unresolved redistribution permissions; this checkout is not cleared for public data distribution. See [data provenance](docs/DATA_PROVENANCE.md) and [release checklist](docs/RELEASE_CHECKLIST.md).
 
 ## Use
 
@@ -22,31 +22,33 @@ No network access is needed during installation. The installer finds its bundled
 
 | Collection | Expected | Present | Geometry / status |
 |---|---:|---:|---|
-| Jobber Fractional Drills - 118deg | 32 | 32 | Generic jobber lengths |
-| Jobber Numbered Drills - 118deg | 60 | 60 | Generic jobber lengths |
-| Jobber Letter Drills - 118deg | 26 | 26 | Generic jobber lengths |
-| Jobber Metric Drills - 118deg | 121 | 121 | Recovered installed data; provisional |
-| PCB Micro Drills - **118deg Assumed** - Carbide | 36 | 36 | Provisional; see below |
-| DESKAR Metric Flat Endmills - HRC50 - 2 Flute | 34 | 34 | Catalog nominal dimensions; provisional solid |
-| DESKAR Metric Flat Endmills - HRC50 - 4 Flute | 34 | 34 | Catalog nominal dimensions; provisional solid |
+| Jobber Fractional Drills - 1/64-1/2 in by 1/64 - 118deg | 32 | 32 | Generic jobber lengths |
+| Jobber Numbered Drills - #80-#1 (0.0135-0.2280 in) - 118deg | 80 | 80 | Original #1–#60 generic; #61–#80 catalog nominal |
+| Jobber Letter Drills - A-Z (0.2340-0.4130 in) - 118deg | 26 | 26 | Generic jobber lengths |
+| Jobber Metric Drills - 1.0-13.0 mm by 0.1 mm - 118deg | 121 | 121 | Recovered installed data; provisional |
+| PCB Micro Drills - 0.100-3.175 mm - 118deg Assumed - Carbide | 36 | 36 | Provisional; see below |
+| DESKAR Metric Flat Endmills - 1-20 mm - HRC50 - 2 Flute | 34 | 34 | Catalog nominal dimensions; provisional solid |
+| DESKAR Metric Flat Endmills - 1-20 mm - HRC50 - 4 Flute | 34 | 34 | Catalog nominal dimensions; provisional solid |
 | Imperial Flat Endmills - 2 Flute | 15 | 0 | Missing; disabled |
 | Imperial Flat Endmills - 4 Flute | 15 | 0 | Missing; disabled |
-| Harvey Imperial Threadmills - 60deg | 15 | 15 | Provisional |
-| **Total** | **388** | **358** | **30 imperial endmill definitions missing** |
+| Harvey Imperial Threadmills - 0.044-0.388 in Cutting Diameter - 60deg | 15 | 15 | Provisional |
+| **Total** | **408** | **378** | **30 imperial endmill definitions missing** |
 
-DESKAR replaces the unavailable DREANIQUE catalog as the active metric endmill source. Its readable 2023 catalog provides 34 dimension variants in each flute count, replacing the initial estimate of 25; the expected inventory is consequently 388 rather than 370. See the [reviewed source and regeneration instructions](docs/source-catalogs/deskar/README.md). Imperial collections remain disabled pending verified specifications. Earlier DREANIQUE research is retained separately, outside the production inventory.
+DESKAR replaces the unavailable DREANIQUE catalog as the active metric endmill source. Its readable 2023 catalog provides 34 dimension variants in each flute count, replacing the initial estimate of 25; that increased the expected inventory from 370 to 388; completing numbered drills now brings it to 408. See the [reviewed source and regeneration instructions](docs/source-catalogs/deskar/README.md). Imperial collections remain disabled pending verified specifications. Earlier DREANIQUE research is retained separately, outside the production inventory.
 
 The planned PCB 135° collection was **not** supplied. Every supplied PCB definition specifies an assumed 118° point. The manifest names the actual supplied data; no angles were changed to meet the proposed collection name.
 
-The original jobber `All_ToolBits` directory duplicates its Fractional, Number, and Letter subfolders. Only the separate sets are curated into `libraries/`. The 169 originally supplied tools and 121 recovered metric tools retain their exact source bytes and UUIDs; [source-inventory.json](docs/source-inventory.json) records their SHA-256 hashes and original paths. The 68 new DESKAR definitions have a reviewed dimension CSV, deterministic generator and per-file provenance records in the same inventory. Original folders are retained for local reference. The metric collection was recovered read-only from the installed FreeCAD library; its source membership snapshot and derived index are in [metric source records](docs/source-catalogs/metric-installed/README.md). [Source catalogs](docs/source-catalogs/) preserve the supplied notes and CSV files, including historical labels that do not always match corrected field names.
+The original jobber `All_ToolBits` directory duplicates its Fractional, Number, and Letter subfolders. Only the separate sets are curated into `libraries/`. The 169 originally supplied tools and 121 recovered metric tools retain their exact source bytes and UUIDs; [source-inventory.json](docs/source-inventory.json) records their SHA-256 hashes and original paths. The 20 added #61–#80 drills have exact nominal dimensions from a [reviewed PTD R18 source sheet](docs/source-catalogs/numbered-extension/README.md), completing the #80–#1 set without altering the original 60 definitions. The 68 new DESKAR definitions have a reviewed dimension CSV, deterministic generator and per-file provenance records in the same inventory. Original folders are retained for local reference. The metric collection was recovered read-only from the installed FreeCAD library; its source membership snapshot and derived index are in [metric source records](docs/source-catalogs/metric-installed/README.md). [Source catalogs](docs/source-catalogs/) preserve the supplied notes and CSV files, including historical labels that do not always match corrected field names.
 
 ## Preservation and duplicates
+
+Collection names now include their actual size ranges. Fractionals cover **1/64–1/2 in by 1/64**, numbered drills **#80–#1**, letters **A–Z**, and metric jobber drills **1.0–13.0 mm by 0.1 mm**. Sizes within the PCB and endmill ranges are not uniformly spaced. Exact historical library names are recognized through manifest `legacy_names`: existing labels are preserved, while new libraries use the range-bearing names. Arbitrary custom renames and ambiguous destinations remain protected.
 
 Existing tool definitions are never overwritten. Existing library numbers are retained; new tools receive numbers after the highest current number. File order is deterministic. A matching library name is reused if unambiguous; managed libraries use deterministic IDs. Renamed managed libraries, ambiguous names, broken dependencies, and nonstandard library metadata are reported and left unchanged.
 
 The UUID is the primary identity. A matching UUID with a changed definition or display name is a conflict. Equivalent definitions with different UUIDs are skipped by default, without merging or relinking. Equivalence compares all properties, normalizes supported length/angle units, and ignores display names. It is conservative: differences in defaults, metadata, or unknown units may need manual review.
 
-One known equivalent pair is **letter E and fractional 1/4-inch**. Selecting all supplied collections with the default policy imports **357 tools** and reports one conflict. Check **Keep different UUIDs as separate tools when definitions are equivalent** to explicitly retain all **358** distinct catalog entries. This policy creates separate assets; it never merges or overwrites definitions. Repeating either policy preserves numbers and adds no duplicate memberships.
+One known equivalent pair is **letter E and fractional 1/4-inch**. Selecting all supplied collections with the default policy imports **377 tools** and reports one conflict. Check **Keep different UUIDs as separate tools when definitions are equivalent** to explicitly retain all **378** distinct catalog entries. This policy creates separate assets; it never merges or overwrites definitions. Repeating either policy preserves numbers and adds no duplicate memberships.
 
 Tools already registered globally with the same unchanged UUID can be linked to a missing destination library without rewriting the tool. Invalid individual files are reported while independent valid tools continue. Incomplete collection counts block that collection to avoid silently installing an incomplete download.
 

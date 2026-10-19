@@ -37,6 +37,7 @@ class Collection:
     geometry: dict
     compatible_versions: tuple
     status: str
+    legacy_names: tuple = ()
 
     def files(self):
         if not self.directory.is_dir():
@@ -92,6 +93,11 @@ def load_manifest(path):
         versions = row["compatible_versions"]
         if not isinstance(versions, list) or not versions or any(v not in SUPPORTED_VERSIONS for v in versions):
             raise ManifestError("compatible_versions must contain supported families: 1.1.x, 27.1.x")
+        legacy_names = row.get("legacy_names", [])
+        if (not isinstance(legacy_names, list)
+                or any(not isinstance(n, str) or not n.strip() or n == name or n in names for n in legacy_names)
+                or len(set(legacy_names)) != len(legacy_names)):
+            raise ManifestError("legacy_names must be distinct, nonempty historical names without collection collisions")
         source, geometry = row["source"], row["geometry"]
         if not isinstance(source, dict) or any(not isinstance(source.get(k), str) or not source[k]
                                                for k in ("attribution", "redistribution")):
@@ -101,7 +107,7 @@ def load_manifest(path):
             raise ManifestError("geometry needs description, accuracy, and notes")
         if geometry["accuracy"] not in ("verified", "generic", "provisional", "unavailable"):
             raise ManifestError("Unknown geometry accuracy")
-        ids.add(cid); names.add(name); directories.add(target)
+        ids.add(cid); names.add(name); names.update(legacy_names); directories.add(target)
         result.append(Collection(cid, name, row["category"], target, row["expected_count"],
-                                 source, row["units"], geometry, tuple(versions), row["status"]))
+                                 source, row["units"], geometry, tuple(versions), row["status"], tuple(legacy_names)))
     return result

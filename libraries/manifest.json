@@ -3,7 +3,7 @@
   "collections": [
     {
       "id": "jobber-fractional-118",
-      "name": "Jobber Fractional Drills - 118deg",
+      "name": "Jobber Fractional Drills - 1/64-1/2 in by 1/64 - 118deg",
       "category": "drills",
       "directory": "drills/fractional-118",
       "expected_count": 32,
@@ -22,34 +22,42 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "Jobber Fractional Drills - 118deg"
+      ]
     },
     {
       "id": "jobber-numbered-118",
-      "name": "Jobber Numbered Drills - 118deg",
+      "name": "Jobber Numbered Drills - #80-#1 (0.0135-0.2280 in) - 118deg",
       "category": "drills",
       "directory": "drills/numbered-118",
-      "expected_count": 60,
+      "expected_count": 80,
       "source": {
-        "attribution": "User-supplied imperial jobber collection; original author/data license not supplied.",
+        "attribution": "User-supplied imperial jobber collection; original author/data license not supplied. #61\u2013#80 added from Precision Twist Drill R18 dimension table, visually reviewed; see docs/source-catalogs/numbered-extension/.",
         "redistribution": "unverified",
-        "urls": []
+        "urls": [
+          "https://content.syndigo.com/asset/4adecacb-7597-4e5c-b752-4a3a510fa3ff/original.pdf"
+        ]
       },
       "units": "imperial",
       "geometry": {
-        "description": "HSS jobber drill, 118 degree point, 2 flutes",
+        "description": "HSS jobber drills #80\u2013#1, 0.0135\u20130.2280 in, 118 degree point, 2 flutes",
         "accuracy": "generic",
-        "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking."
+        "notes": "Diameters retained from supplied catalog. Overall and flute lengths are generic jobber estimates, not verified physical dimensions. Not suitable for collision checking. #1\u2013#60 source bytes unchanged. #61\u2013#80 nominal diameter/flute/overall lengths transcribed from PTD R18 table, not physically measured. Combined library retains generic/provisional status; not suitable for collision checking."
       },
       "compatible_versions": [
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "Jobber Numbered Drills - 118deg"
+      ]
     },
     {
       "id": "jobber-letter-118",
-      "name": "Jobber Letter Drills - 118deg",
+      "name": "Jobber Letter Drills - A-Z (0.2340-0.4130 in) - 118deg",
       "category": "drills",
       "directory": "drills/letter-118",
       "expected_count": 26,
@@ -68,11 +76,14 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "Jobber Letter Drills - 118deg"
+      ]
     },
     {
       "id": "jobber-metric-118",
-      "name": "Jobber Metric Drills - 118deg",
+      "name": "Jobber Metric Drills - 1.0-13.0 mm by 0.1 mm - 118deg",
       "category": "drills",
       "directory": "drills/metric-118",
       "expected_count": 121,
@@ -92,11 +103,14 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "Jobber Metric Drills - 118deg"
+      ]
     },
     {
       "id": "pcb-micro-118-assumed",
-      "name": "PCB Micro Drills - 118deg Assumed - Carbide",
+      "name": "PCB Micro Drills - 0.100-3.175 mm - 118deg Assumed - Carbide",
       "category": "drills",
       "directory": "drills/pcb-micro-118-assumed",
       "expected_count": 36,
@@ -119,11 +133,14 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "PCB Micro Drills - 118deg Assumed - Carbide"
+      ]
     },
     {
       "id": "deskar-hrc50-metric-2f",
-      "name": "DESKAR Metric Flat Endmills - HRC50 - 2 Flute",
+      "name": "DESKAR Metric Flat Endmills - 1-20 mm - HRC50 - 2 Flute",
       "category": "endmills",
       "directory": "endmills/deskar-hrc50-metric-2f",
       "expected_count": 34,
@@ -145,11 +162,14 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "DESKAR Metric Flat Endmills - HRC50 - 2 Flute"
+      ]
     },
     {
       "id": "deskar-hrc50-metric-4f",
-      "name": "DESKAR Metric Flat Endmills - HRC50 - 4 Flute",
+      "name": "DESKAR Metric Flat Endmills - 1-20 mm - HRC50 - 4 Flute",
       "category": "endmills",
       "directory": "endmills/deskar-hrc50-metric-4f",
       "expected_count": 34,
@@ -171,7 +191,10 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "DESKAR Metric Flat Endmills - HRC50 - 4 Flute"
+      ]
     },
     {
       "id": "endmills-imperial-2f",
@@ -221,7 +244,7 @@
     },
     {
       "id": "harvey-imperial-60",
-      "name": "Harvey Imperial Threadmills - 60deg",
+      "name": "Harvey Imperial Threadmills - 0.044-0.388 in Cutting Diameter - 60deg",
       "category": "threadmills",
       "directory": "threadmills/harvey-imperial",
       "expected_count": 15,
@@ -242,7 +265,10 @@
         "1.1.x",
         "27.1.x"
       ],
-      "status": "available"
+      "status": "available",
+      "legacy_names": [
+        "Harvey Imperial Threadmills - 60deg"
+      ]
     }
   ]
 }

@@ -2,12 +2,12 @@
 
 ## Executed in this development environment
 
-- Python standard-library unittest suite: **73 tests passed**.
-- All 358 curated definitions parse, have unique canonical UUIDs matching filenames, and pass their shape-specific validators.
+- Python standard-library unittest suite: **79 tests passed**.
+- All 378 curated definitions parse, have unique canonical UUIDs matching filenames, and pass their shape-specific validators.
 - Curated source bytes match the original files and recorded SHA-256 hashes.
 - All jobber, PCB, and Harvey CSV dimension transcriptions match the supplied `.fctb` values. This is internal consistency, not independent manufacturer/physical verification.
 - The 118 jobber aggregate copies are byte-identical to the separate folders.
-- Mock full-inventory install/repeat: default policy imports 357 and reports one equivalent-definition pair; repeat skips 357 and retains that conflict. Explicit distinct-UUID policy imports 358; repeat skips all 358.
+- Mock full-inventory install/repeat: default policy imports 377 and reports one equivalent-definition pair; repeat skips 377 and retains that conflict. Explicit distinct-UUID policy imports 378; repeat skips all 378.
 - Core tests cover missing/malformed files, non-finite/duplicate-key JSON, schemas and required fields, path escapes, UUID conflicts, custom numbering, source duplicates, renamed/ambiguous libraries, broken references, backup failure, failed registration, failed save/retry, concurrent-change detection, and native adapter call contracts.
 
 Commands are in the README. The initial check missed the Flatpak installation. After the user reported a Base.Quantity deepcopy failure, native checks were run against the installed FreeCAD 1.1.3. CI configuration remains unrun remotely. Unit tests alone do not establish native compatibility.
@@ -54,7 +54,7 @@ Run on Windows, Linux native, Linux Flatpak, and macOS with FreeCAD 1.1.x. Recor
 2. Verify the eight available collections are selectable with correct counts and geometry notes. The two metric DESKAR endmill collections each contain 34 tools; imperial endmills are disabled. PCB displays assumed 118°, never 135°.
 3. Preview several collections and then run with dry-run still checked. Compare the configured asset directory before/after; installer actions should not modify it. Account separately for normal CAM startup initialization. No installer backup directory should be created by dry-run.
 4. Install a few selected collections into a clean test profile. Verify new library names, IDs, all parameters/material/flutes, registered UUIDs, memberships, and tool numbers.
-5. Use the explicit distinct-UUID option for a full 358-tool test, or expect 357 plus the letter-E/fractional-1/4 equivalent conflict under the default policy.
+5. Use the explicit distinct-UUID option for a full 378-tool test, or expect 377 plus the letter-E/fractional-1/4 equivalent conflict under the default policy.
 6. Add a custom tool to a destination, change its number to 42 or another large number, and customize a supplied registered tool's geometry/name. Rerun. Verify the custom number and edits persist, the modified UUID is reported as a conflict, and newly missing tools append after the maximum number.
 7. Repeat the successful install unchanged. No assets should be duplicated; tool numbers and library bytes should remain stable when no changes are needed.
 8. Close FreeCAD completely, restart, and verify saved tools/libraries in CAM. This is required before claiming persistence compatibility.
@@ -73,7 +73,7 @@ python3 tests/launch_clean_flatpak.py
 
 This creates a fresh `.test-runs/gui-<UUID>` directory on each launch and selects separate config, data, and temporary directories using the FreeCAD-specific environment variables. A wrapper macro checks actual config/data/CAM paths before opening the installer. Current libraries, custom tools, and normal application preferences are retained. The profile persists after the window closes, so its logs and assets can be inspected. No existing tool assets need to be deleted to test first-time library creation.
 
-For this test, preview first, uncheck Dry-run and install, then rerun the installer in the same test window to check idempotency. Use the explicit distinct-UUID option if all 358 available entries are desired. Do not launch the helper a second time to check a rerun: each new helper launch intentionally creates a different empty profile.
+For this test, preview first, uncheck Dry-run and install, then rerun the installer in the same test window to check idempotency. Use the explicit distinct-UUID option if all 378 available entries are desired. Do not launch the helper a second time to check a rerun: each new helper launch intentionally creates a different empty profile.
 
 ## DREANIQUE generator checks
 
@@ -104,3 +104,29 @@ The version allowlist explicitly supports `1.1.x` and `27.1.x`. Collection
 compatibility is checked against the running family; future unrelated versions
 remain rejected. This verifies the tested local development build, not all future
 27.1 snapshots. Interactive GUI behavior on this build still needs user testing.
+
+## Numbered expansion and historical labels — 2026-10-19
+
+Six additional tests cover complete #1–#80 coverage, exact source conversion,
+reproducible generation, preservation of existing/customized files, invalid or
+incomplete source rejection, manifest historical-name validation, and safe
+60-to-80-tool upgrades. The mock upgrade also preserves a custom tool numbered
+900 and existing numbering, appends only 20 tools, and skips all 80 on rerun.
+Unknown user renames and ambiguous old/new destination labels remain conflicts.
+
+Actual native tests passed in the local Pixi FreeCAD 27.1.0 development build:
+378-tool install into eight libraries, dry-run, repeat-install without changes,
+new-process reload, and a dedicated historical-label upgrade. The latter
+reconstructs the old 60-member numbered library with its original label and a
+custom number 500, links the missing 20 registered assets at numbers 501–520,
+preserves all original memberships/numbers and the old label, and skips all 80
+on rerun. Logs/markers are retained under
+`.test-runs/pixi-native-151d2260-5588-460a-b197-71e5996774b4/`.
+The native tests use disposable profiles, not normal user libraries.
+
+The historical-name upgrade is an additional fourth stage after smoke, install,
+and reload in both native test launchers. Old 358-tool results above are retained
+as dated historical evidence. Range-bearing names apply to new libraries; the
+installer does not silently rename existing destinations.
+
+The same four native stages also passed in **FreeCAD 1.1.3 Linux Flatpak** with 378 tools. Logs and success markers: `.test-runs/native-444451c9-31ee-4ee8-a7b3-f5faddba6346/`. Both supported local runtimes passed the numbered-library historical-name upgrade and all source definitions were reloaded without changes.

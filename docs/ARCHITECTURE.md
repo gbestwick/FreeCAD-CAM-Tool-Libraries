@@ -48,3 +48,7 @@ The initial 169-tool inventory has been extended by recovering 121 referenced de
 ## Reviewed manufacturer endmill generation
 
 DESKAR 2023 catalog printed page 115 supplies 34 metric dimension variants in both two- and four-flute options. An offline standard-library generator reads the reviewed source CSV and creates 68 deterministic native definitions; the runtime importer is unchanged. Two formerly empty metric slots are now brand-specific collections. The planning count changes from 370 to 388 expected; 358 tools are available in eight collections, with 30 imperial endmills still missing. Original source bytes remain unchanged; generated tool hashes and source records extend the inventory.
+
+## Numbered drill expansion and historical library labels
+
+The numbered collection now contains #1–#80: 60 unchanged source files plus 20 PTD R18 nominal transcriptions generated from a reviewed CSV. Available inventory is 378; expected inventory is 408. Manifest `legacy_names` is an optional tuple of exact historical labels, validated against other collection names and aliases. Destination lookup accepts the current or a historical label, preserving stored labels and numbering. Arbitrary renamed managed libraries and ambiguous matches remain conflicts. New libraries receive range-bearing names; stable collection/library IDs are unchanged.

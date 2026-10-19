@@ -382,7 +382,7 @@ class RepositoryTests(unittest.TestCase):
     def test_manifest_inventory_and_all_definitions(self):
         collections=load_manifest(ROOT/'libraries/manifest.json')
         self.assertEqual(len(collections),10)
-        self.assertEqual(sum(c.expected_count for c in collections),388)
+        self.assertEqual(sum(c.expected_count for c in collections),408)
         ids=set();count=0
         for c in collections:
             available,n=c.availability()
@@ -391,7 +391,7 @@ class RepositoryTests(unittest.TestCase):
             for path in c.files():
                 tool=validate_tool(path,c.category)
                 self.assertNotIn(tool.id,ids);ids.add(tool.id);count+=1
-        self.assertEqual(count,358)
+        self.assertEqual(count,378)
 
     def test_originals_preserved_exactly(self):
         inventory=read_json((ROOT/'docs/source-inventory.json').read_bytes())
@@ -424,9 +424,9 @@ class RepositoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             assets=MockAssets();engine=Installer(assets,temp)
             first=engine.run(collections,False);second=engine.run(collections,False)
-            self.assertEqual(first.tools_imported,357)
+            self.assertEqual(first.tools_imported,377)
             self.assertEqual(first.conflicts,1)
-            self.assertEqual(second.tools_skipped,357)
+            self.assertEqual(second.tools_skipped,377)
             self.assertEqual(second.conflicts,1)
             self.assertFalse(first.errors+second.errors)
 
@@ -436,8 +436,8 @@ class RepositoryTests(unittest.TestCase):
             assets=MockAssets();engine=Installer(assets,temp)
             first=engine.run(collections,False,equivalent_policy='distinct')
             second=engine.run(collections,False,equivalent_policy='distinct')
-            self.assertEqual(first.tools_imported,358)
-            self.assertEqual(second.tools_skipped,358)
+            self.assertEqual(first.tools_imported,378)
+            self.assertEqual(second.tools_skipped,378)
             self.assertFalse(first.errors+second.errors)
 
     def test_path_containment_and_schema(self):

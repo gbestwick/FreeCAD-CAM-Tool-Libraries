@@ -220,7 +220,7 @@ class Installer:
                     if not found and not created:
                         report.libraries_created += 1
                         created = True
-                        libraries.append({"id": ident, "label": collection.name, "data": data, "raw": current_raw})
+                        libraries.append({"id": ident, "label": data["label"], "data": data, "raw": current_raw})
                     emit(f"{'PLAN' if dry_run else 'ADD'} T{number}: {tool.data['name']}")
                     if not dry_run:
                         journal.action("saved", library_id=ident, tool_id=tool.id, number=number)
